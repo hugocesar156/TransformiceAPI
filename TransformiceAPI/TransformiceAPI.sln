@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36705.20
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransformiceAPI", "TransformiceAPI\TransformiceAPI.csproj", "{262BDE38-D64F-4756-A70C-97DFE7858010}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransformiceAPI.DAL", "TransformiceAPI.DAL\TransformiceAPI.DAL.csproj", "{180858BA-27E6-4627-B246-11A137F99B0E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransformiceAPI.Application", "TransformiceAPI.Application\TransformiceAPI.Application.csproj", "{9BDC29A8-C208-4618-A88B-A8306F491D68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransformiceAPI.Domain", "TransformiceAPI.Domain\TransformiceAPI.Domain.csproj", "{7677B106-1AC7-4F79-8142-0DFABD2FEABC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransformiceAPI.Ioc", "TransformiceAPI.Ioc\TransformiceAPI.Ioc.csproj", "{D54AE42B-D9C8-42B2-B885-8F0D25F6901A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransformiceAPI.Shared", "TransformiceAPI.Shared\TransformiceAPI.Shared.csproj", "{479B0E89-6341-495C-AC95-6F28142B9991}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{262BDE38-D64F-4756-A70C-97DFE7858010}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{262BDE38-D64F-4756-A70C-97DFE7858010}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{262BDE38-D64F-4756-A70C-97DFE7858010}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{262BDE38-D64F-4756-A70C-97DFE7858010}.Release|Any CPU.Build.0 = Release|Any CPU
+		{180858BA-27E6-4627-B246-11A137F99B0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{180858BA-27E6-4627-B246-11A137F99B0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{180858BA-27E6-4627-B246-11A137F99B0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{180858BA-27E6-4627-B246-11A137F99B0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BDC29A8-C208-4618-A88B-A8306F491D68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BDC29A8-C208-4618-A88B-A8306F491D68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BDC29A8-C208-4618-A88B-A8306F491D68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BDC29A8-C208-4618-A88B-A8306F491D68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7677B106-1AC7-4F79-8142-0DFABD2FEABC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7677B106-1AC7-4F79-8142-0DFABD2FEABC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7677B106-1AC7-4F79-8142-0DFABD2FEABC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7677B106-1AC7-4F79-8142-0DFABD2FEABC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D54AE42B-D9C8-42B2-B885-8F0D25F6901A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D54AE42B-D9C8-42B2-B885-8F0D25F6901A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D54AE42B-D9C8-42B2-B885-8F0D25F6901A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D54AE42B-D9C8-42B2-B885-8F0D25F6901A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{479B0E89-6341-495C-AC95-6F28142B9991}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{479B0E89-6341-495C-AC95-6F28142B9991}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{479B0E89-6341-495C-AC95-6F28142B9991}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{479B0E89-6341-495C-AC95-6F28142B9991}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C85B9894-A6E5-494C-9F95-1DBDBDE4DF33}
+	EndGlobalSection
+EndGlobal

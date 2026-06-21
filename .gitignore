@@ -1,0 +1,51 @@
+## Build results and artifacts
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+[Bb]uild/
+
+## IDE and Editor files
+.vs/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+## User secrets and local configuration
+appsettings.Development.json
+appsettings.Local.json
+*.secrets.json
+
+## Database files (SQL Server Express / SQLite local databases)
+*.mdf
+*.ldf
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+
+## Node.js build artifacts (if using Angular, React, or Vue SPA templates)
+node_modules/
+/wwwroot/lib/
+dist/
+npm-debug.log*
+
+## Operating System files
+.DS_Store
+Thumbs.db
+
+## Log files
+*.log
+_log/
+logs/
