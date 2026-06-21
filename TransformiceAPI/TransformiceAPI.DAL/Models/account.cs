@@ -44,7 +44,16 @@ public partial class account
     public virtual ICollection<account_level> account_levels { get; set; } = new List<account_level>();
 
     [InverseProperty("id_accountNavigation")]
+    public virtual ICollection<account_shop_item> account_shop_items { get; set; } = new List<account_shop_item>();
+
+    [InverseProperty("id_accountNavigation")]
+    public virtual ICollection<account_shop_outfit> account_shop_outfits { get; set; } = new List<account_shop_outfit>();
+
+    [InverseProperty("id_accountNavigation")]
     public virtual ICollection<account_title> account_titles { get; set; } = new List<account_title>();
+
+    [InverseProperty("id_accountNavigation")]
+    public virtual ICollection<account_wallet> account_wallets { get; set; } = new List<account_wallet>();
 
     [ForeignKey("id_gender")]
     [InverseProperty("accounts")]
