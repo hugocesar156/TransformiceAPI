@@ -44,6 +44,9 @@ public partial class account
     public virtual ICollection<account_level> account_levels { get; set; } = new List<account_level>();
 
     [InverseProperty("id_accountNavigation")]
+    public virtual ICollection<account_shaman_mode> account_shaman_modes { get; set; } = new List<account_shaman_mode>();
+
+    [InverseProperty("id_accountNavigation")]
     public virtual ICollection<account_shop_item> account_shop_items { get; set; } = new List<account_shop_item>();
 
     [InverseProperty("id_accountNavigation")]
@@ -66,4 +69,7 @@ public partial class account
     [ForeignKey("id_user")]
     [InverseProperty("accounts")]
     public virtual user id_userNavigation { get; set; } = null!;
+
+    [InverseProperty("id_accountNavigation")]
+    public virtual ICollection<tribe_member> tribe_members { get; set; } = new List<tribe_member>();
 }

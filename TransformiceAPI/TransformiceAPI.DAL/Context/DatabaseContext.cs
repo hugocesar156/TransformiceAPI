@@ -20,6 +20,8 @@ public partial class DatabaseContext : DbContext
 
     public virtual DbSet<account_level> account_levels { get; set; }
 
+    public virtual DbSet<account_shaman_mode> account_shaman_modes { get; set; }
+
     public virtual DbSet<account_shop_item> account_shop_items { get; set; }
 
     public virtual DbSet<account_shop_item_color> account_shop_item_colors { get; set; }
@@ -38,6 +40,8 @@ public partial class DatabaseContext : DbContext
 
     public virtual DbSet<level> levels { get; set; }
 
+    public virtual DbSet<shaman_mode> shaman_modes { get; set; }
+
     public virtual DbSet<shop_item> shop_items { get; set; }
 
     public virtual DbSet<shop_item_category> shop_item_categories { get; set; }
@@ -47,6 +51,16 @@ public partial class DatabaseContext : DbContext
     public virtual DbSet<shop_item_type> shop_item_types { get; set; }
 
     public virtual DbSet<title> titles { get; set; }
+
+    public virtual DbSet<tribe> tribes { get; set; }
+
+    public virtual DbSet<tribe_member> tribe_members { get; set; }
+
+    public virtual DbSet<tribe_permission> tribe_permissions { get; set; }
+
+    public virtual DbSet<tribe_role> tribe_roles { get; set; }
+
+    public virtual DbSet<tribe_role_permission> tribe_role_permissions { get; set; }
 
     public virtual DbSet<user> users { get; set; }
 
@@ -82,6 +96,19 @@ public partial class DatabaseContext : DbContext
             entity.HasOne(d => d.id_levelNavigation).WithMany(p => p.account_levels)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__account_l__id_le__5535A963");
+        });
+
+        modelBuilder.Entity<account_shaman_mode>(entity =>
+        {
+            entity.HasKey(e => e.id).HasName("PK__account___3213E83FF898A7B6");
+
+            entity.HasOne(d => d.id_accountNavigation).WithMany(p => p.account_shaman_modes)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__account_s__id_ac__05D8E0BE");
+
+            entity.HasOne(d => d.id_shaman_modeNavigation).WithMany(p => p.account_shaman_modes)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__account_s__id_sh__06CD04F7");
         });
 
         modelBuilder.Entity<account_shop_item>(entity =>
@@ -169,6 +196,11 @@ public partial class DatabaseContext : DbContext
             entity.HasKey(e => e.id).HasName("PK__level__3213E83F6177C0D1");
         });
 
+        modelBuilder.Entity<shaman_mode>(entity =>
+        {
+            entity.HasKey(e => e.id).HasName("PK__shaman_m__3213E83FB8A07B9E");
+        });
+
         modelBuilder.Entity<shop_item>(entity =>
         {
             entity.HasKey(e => e.id).HasName("PK__shop_ite__3213E83F81D4B171");
@@ -204,6 +236,51 @@ public partial class DatabaseContext : DbContext
         modelBuilder.Entity<title>(entity =>
         {
             entity.HasKey(e => e.id).HasName("PK__title__3213E83F8D087AE4");
+        });
+
+        modelBuilder.Entity<tribe>(entity =>
+        {
+            entity.HasKey(e => e.id).HasName("PK__tribe__3213E83FB567B626");
+        });
+
+        modelBuilder.Entity<tribe_member>(entity =>
+        {
+            entity.HasKey(e => e.id).HasName("PK__tribe_me__3213E83FD6CD65E2");
+
+            entity.HasOne(d => d.id_accountNavigation).WithMany(p => p.tribe_members)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__tribe_mem__id_ac__14270015");
+
+            entity.HasOne(d => d.id_tribe_roleNavigation).WithMany(p => p.tribe_members)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__tribe_mem__id_tr__151B244E");
+        });
+
+        modelBuilder.Entity<tribe_permission>(entity =>
+        {
+            entity.HasKey(e => e.id).HasName("PK__tribe_pe__3213E83F3DD684F5");
+        });
+
+        modelBuilder.Entity<tribe_role>(entity =>
+        {
+            entity.HasKey(e => e.id).HasName("PK__tribe_ro__3213E83F920A5974");
+
+            entity.HasOne(d => d.id_tribeNavigation).WithMany(p => p.tribe_roles)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__tribe_rol__id_tr__0D7A0286");
+        });
+
+        modelBuilder.Entity<tribe_role_permission>(entity =>
+        {
+            entity.HasKey(e => e.id).HasName("PK__tribe_ro__3213E83F9E001ACF");
+
+            entity.HasOne(d => d.id_tribe_permissionNavigation).WithMany(p => p.tribe_role_permissions)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__tribe_rol__id_tr__114A936A");
+
+            entity.HasOne(d => d.id_tribe_roleNavigation).WithMany(p => p.tribe_role_permissions)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__tribe_rol__id_tr__10566F31");
         });
 
         modelBuilder.Entity<user>(entity =>
