@@ -16,30 +16,40 @@ namespace TransformiceAPI.Application.Services
 
         public async Task<AccountResponse> Get()
         {
-            Account account = await _accountRepository.Get();
+            try
+            {
+                Account? account = await _accountRepository.Get();
 
-            AccountResponse response = new AccountResponse(
-                account.Id,
-                account.Name,
-                account.Gender.Description,
-                account.InscriptionDate,
-                account.AccountLevel.Level.Number,
-                account.AccountLevel.Experience,
-                account.AccountLevel.Level.Experience,
-                account.ActualTitle.Name,
-                account.NormalModeSaves,
-                account.HardModeSaves,
-                account.DivineModeSaves,
-                account.CheeseShaman,
-                account.FirstCheese,
-                account.Cheese,
-                account.Bootcamp,
-                account.Titles.Select(t => new Title(
-                    t.Id,
-                    t.Name))
-                .ToList());
+                if (account is null)
+                    throw new HttpRequestException("Falha ao buscar dados da conta.", null, System.Net.HttpStatusCode.NotFound);
 
-            return response;
+                AccountResponse response = new AccountResponse(
+                    account.Id,
+                    account.Name,
+                    account.Gender.Description,
+                    account.InscriptionDate,
+                    account.AccountLevel.Level.Number,
+                    account.AccountLevel.Experience,
+                    account.AccountLevel.Level.Experience,
+                    account.ActualTitle.Name,
+                    account.NormalModeSaves,
+                    account.HardModeSaves,
+                    account.DivineModeSaves,
+                    account.CheeseShaman,
+                    account.FirstCheese,
+                    account.Cheese,
+                    account.Bootcamp,
+                    account.Titles.Select(t => new Title(
+                        t.Id,
+                        t.Name))
+                    .ToList());
+
+                return response;
+            }
+            catch (HttpRequestException)
+            {
+                throw;
+            }
         }
     }
 }
