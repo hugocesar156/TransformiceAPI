@@ -12,6 +12,6 @@ namespace TransformiceAPI.Application.Contexts
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public int IdUser => int.Parse(_httpContextAccessor.HttpContext?.User?.FindFirst(ClaimTypes.PrimarySid)?.Value ?? "0");
+        public int IdUser => int.Parse(_httpContextAccessor.HttpContext?.User?.FindFirst(ClaimTypes.Sid)?.Value ?? "0");
     }
 }
