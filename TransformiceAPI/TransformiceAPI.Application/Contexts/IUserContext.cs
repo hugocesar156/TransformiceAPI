@@ -3,6 +3,5 @@
     public interface IUserContext
     {
         public int IdUser { get; }
-        public int IdAccount { get; }
     }
 }

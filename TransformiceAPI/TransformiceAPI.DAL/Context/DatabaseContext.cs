@@ -28,11 +28,15 @@ public partial class DatabaseContext : DbContext
 
     public virtual DbSet<title> titles { get; set; }
 
+    public virtual DbSet<user> users { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<account>(entity =>
         {
             entity.HasKey(e => e.id).HasName("PK__account__3213E83F0C7854D0");
+
+            entity.Property(e => e.id_user).HasDefaultValue(1);
 
             entity.HasOne(d => d.id_genderNavigation).WithMany(p => p.accounts)
                 .OnDelete(DeleteBehavior.ClientSetNull)
@@ -41,6 +45,10 @@ public partial class DatabaseContext : DbContext
             entity.HasOne(d => d.id_titleNavigation).WithMany(p => p.accounts)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__account__id_titl__52593CB8");
+
+            entity.HasOne(d => d.id_userNavigation).WithMany(p => p.accounts)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__account__id_user__628FA481");
         });
 
         modelBuilder.Entity<account_level>(entity =>
@@ -82,6 +90,11 @@ public partial class DatabaseContext : DbContext
         modelBuilder.Entity<title>(entity =>
         {
             entity.HasKey(e => e.id).HasName("PK__title__3213E83F8D087AE4");
+        });
+
+        modelBuilder.Entity<user>(entity =>
+        {
+            entity.HasKey(e => e.id).HasName("PK__user__3213E83F1A51AEBC");
         });
 
         OnModelCreatingPartial(modelBuilder);

@@ -12,7 +12,7 @@ namespace TransformiceAPI.Ioc
         {
             services.AddScoped<IUserContext, UserContext>();
 
-            services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(configuration.GetConnectionString("Data") ?? string.Empty));
+            services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(configuration.GetConnectionString("DatabaseConnection") ?? string.Empty));
 
             services.AddServices(configuration);
             services.AddRepositories(configuration);

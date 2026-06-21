@@ -17,14 +17,14 @@ namespace TransformiceAPI.DAL.Repositories
             _userContext = userContext;
         }
 
-        public async Task<Account> Get()
+        public async Task<Account?> Get()
         {
-            Account account = await _data.accounts
+            Account? account = await _data.accounts
                 .Include(a => a.id_genderNavigation)
                 .Include(a => a.account_levels)
                     .ThenInclude(al => al.id_levelNavigation)
                 .Include(a => a.id_titleNavigation)
-                .Where(a => a.id == 1)
+                .Where(a => a.id == _userContext.IdUser)
                 .Select(a => new Account(
                     a.id,
                     a.name,
@@ -53,7 +53,7 @@ namespace TransformiceAPI.DAL.Repositories
                         at.id_titleNavigation.id,
                         at.id_titleNavigation.name
                         )).ToList())
-                ).FirstAsync();
+                ).FirstOrDefaultAsync();
 
             return account;
         }

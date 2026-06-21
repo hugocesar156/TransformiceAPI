@@ -1,30 +1,29 @@
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using TransformiceAPI.Application.Interfaces;
+using TransformiceAPI.Application.Models.Requests;
 using TransformiceAPI.Application.Models.Responses;
 
 namespace TransformiceAPI.Controllers
 {
-    [Authorize]
     [ApiController]
-    [Route("account")]
-    public class AccountController : ControllerBase
+    [Route("user")]
+    public class UserController : ControllerBase
     {
-        private readonly IAccountService _accountService;
+        private readonly IUserService _userService;
 
-        public AccountController(IAccountService accountService)
+        public UserController(IUserService userService)
         {
-            _accountService = accountService;
+            _userService = userService;
         }
 
-        [HttpGet]
-        [ProducesResponseType(typeof(AccountResponse), StatusCodes.Status200OK)]
-        public async Task<IActionResult> Get()
+        [HttpPost("login")]
+        [ProducesResponseType(typeof(AuthenticationResponse), StatusCodes.Status200OK)]
+        public async Task<IActionResult> Login(AuthenticationRequest request)
         {
             try
             {
-                var response = await _accountService.Get();
+                var response = await _userService.Authenticate(request);
                 return StatusCode((int)HttpStatusCode.OK, response);
             }
             catch (HttpRequestException ex)

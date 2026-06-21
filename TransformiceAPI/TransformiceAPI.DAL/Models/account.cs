@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace TransformiceAPI.DAL.Models;
 
 [Table("account")]
+[Index("name", Name = "UQ_account", IsUnique = true)]
 public partial class account
 {
     [Key]
@@ -37,6 +38,8 @@ public partial class account
 
     public int bootcamp { get; set; }
 
+    public int id_user { get; set; }
+
     [InverseProperty("id_accountNavigation")]
     public virtual ICollection<account_level> account_levels { get; set; } = new List<account_level>();
 
@@ -50,4 +53,8 @@ public partial class account
     [ForeignKey("id_title")]
     [InverseProperty("accounts")]
     public virtual title id_titleNavigation { get; set; } = null!;
+
+    [ForeignKey("id_user")]
+    [InverseProperty("accounts")]
+    public virtual user id_userNavigation { get; set; } = null!;
 }

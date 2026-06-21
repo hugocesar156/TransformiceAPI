@@ -10,6 +10,7 @@ namespace TransformiceAPI.Ioc
         public static IServiceCollection AddServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<IUserService, UserService>();
 
             return services;
         }
