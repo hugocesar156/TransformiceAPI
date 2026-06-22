@@ -22,6 +22,8 @@ public partial class DatabaseContext : DbContext
 
     public virtual DbSet<account_shaman_mode> account_shaman_modes { get; set; }
 
+    public virtual DbSet<account_shaman_skill> account_shaman_skills { get; set; }
+
     public virtual DbSet<account_shop_item> account_shop_items { get; set; }
 
     public virtual DbSet<account_shop_item_color> account_shop_item_colors { get; set; }
@@ -41,6 +43,10 @@ public partial class DatabaseContext : DbContext
     public virtual DbSet<level> levels { get; set; }
 
     public virtual DbSet<shaman_mode> shaman_modes { get; set; }
+
+    public virtual DbSet<shaman_skill> shaman_skills { get; set; }
+
+    public virtual DbSet<shaman_skill_type> shaman_skill_types { get; set; }
 
     public virtual DbSet<shop_item> shop_items { get; set; }
 
@@ -109,6 +115,19 @@ public partial class DatabaseContext : DbContext
             entity.HasOne(d => d.id_shaman_modeNavigation).WithMany(p => p.account_shaman_modes)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__account_s__id_sh__06CD04F7");
+        });
+
+        modelBuilder.Entity<account_shaman_skill>(entity =>
+        {
+            entity.HasKey(e => e.id).HasName("PK__account___3213E83F5273ED24");
+
+            entity.HasOne(d => d.id_accountNavigation).WithMany(p => p.account_shaman_skills)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__account_s__id_ac__1DB06A4F");
+
+            entity.HasOne(d => d.id_shaman_skillNavigation).WithMany(p => p.account_shaman_skills)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__account_s__id_sh__1CBC4616");
         });
 
         modelBuilder.Entity<account_shop_item>(entity =>
@@ -199,6 +218,20 @@ public partial class DatabaseContext : DbContext
         modelBuilder.Entity<shaman_mode>(entity =>
         {
             entity.HasKey(e => e.id).HasName("PK__shaman_m__3213E83FB8A07B9E");
+        });
+
+        modelBuilder.Entity<shaman_skill>(entity =>
+        {
+            entity.HasKey(e => e.id).HasName("PK__shaman_s__3213E83F349C6977");
+
+            entity.HasOne(d => d.id_shaman_skill_typeNavigation).WithMany(p => p.shaman_skills)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__shaman_sk__id_sh__19DFD96B");
+        });
+
+        modelBuilder.Entity<shaman_skill_type>(entity =>
+        {
+            entity.HasKey(e => e.id).HasName("PK__shaman_s__3213E83F655730BA");
         });
 
         modelBuilder.Entity<shop_item>(entity =>
