@@ -18,6 +18,8 @@ public partial class DatabaseContext : DbContext
 
     public virtual DbSet<account> accounts { get; set; }
 
+    public virtual DbSet<account_friend> account_friends { get; set; }
+
     public virtual DbSet<account_level> account_levels { get; set; }
 
     public virtual DbSet<account_shaman_mode> account_shaman_modes { get; set; }
@@ -89,6 +91,19 @@ public partial class DatabaseContext : DbContext
             entity.HasOne(d => d.id_userNavigation).WithMany(p => p.accounts)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__account__id_user__628FA481");
+        });
+
+        modelBuilder.Entity<account_friend>(entity =>
+        {
+            entity.HasKey(e => e.id).HasName("PK__account___3213E83F5641A87C");
+
+            entity.HasOne(d => d.id_accountNavigation).WithMany(p => p.account_friendid_accountNavigations)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__account_f__id_ac__208CD6FA");
+
+            entity.HasOne(d => d.id_friendNavigation).WithMany(p => p.account_friendid_friendNavigations)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__account_f__id_fr__2180FB33");
         });
 
         modelBuilder.Entity<account_level>(entity =>

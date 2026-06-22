@@ -43,6 +43,12 @@ public partial class account
     public int? id_soulmate { get; set; }
 
     [InverseProperty("id_accountNavigation")]
+    public virtual ICollection<account_friend> account_friendid_accountNavigations { get; set; } = new List<account_friend>();
+
+    [InverseProperty("id_friendNavigation")]
+    public virtual ICollection<account_friend> account_friendid_friendNavigations { get; set; } = new List<account_friend>();
+
+    [InverseProperty("id_accountNavigation")]
     public virtual ICollection<account_level> account_levels { get; set; } = new List<account_level>();
 
     [InverseProperty("id_accountNavigation")]
